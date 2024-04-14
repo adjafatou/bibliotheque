@@ -16,9 +16,9 @@ public class Main {
         bibliotheque.ajouterLivre(livre3);
 
         // Initialisation pour les users
-       // Utilisateur utilisateur1 = new Utilisateur("Adja", 12345, "membre");
+       Utilisateur utilisateur1 = new Utilisateur("Adja", 12345, "membre");
         Utilisateur utilisateur2 = new Utilisateur("Fatou", 67890, "admin");
-        //bibliotheque.inscrireUtilisateur(utilisateur1);
+        bibliotheque.inscrireUtilisateur(utilisateur1);
         bibliotheque.inscrireUtilisateur(utilisateur2);
 
         //ici on a voulu faire un menu en fonction de chaque utilisateur connecté car les cas d'utilisations different
