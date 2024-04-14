@@ -54,23 +54,46 @@ public class Utilisateur {
     // Méthodes pour emprunter et retourner des livres, vérifier les livres empruntés et mettre à jour le statut de cotisation
 
     public void emprunterLivre(Livre livre, Bibliotheque bibliotheque) {
-        // Méthode emprunterLivre
+        // Vérifier si le livre est disponible
+        if (bibliotheque.verifierDisponibiliteLivre(livre)) {
+            // Diminuer le nombre d'exemplaires disponibles dans la bibliothèque
+            bibliotheque.decrementerExemplairesDisponibles(livre);
+
+            // Ajouter le livre à la liste des livres empruntés par cet utilisateur
+            livresEmpruntes.add(livre);
+
+            System.out.println("Livre emprunté avec succès : " + livre.getTitre());
+        } else {
+            System.out.println("Désolé, ce livre n'est pas disponible pour l'emprunt.");
+        }
     }
 
     public void retournerLivre(Livre livre, Bibliotheque bibliotheque) {
-        // Méthode retournerLivre
-    }
+        // Vérifier si l'utilisateur a emprunté ce livre
+        if (livresEmpruntes.contains(livre)) {
+            // Augmenter le nombre d'exemplaires disponibles dans la bibliothèque
+            bibliotheque.incrementerExemplairesDisponibles(livre);
 
-  public void consulterLivresEmpruntes() {
-    if (livresEmpruntes.isEmpty()) {
-        System.out.println("Vous n'avez emprunté aucun livre.");
-    } else {
-        System.out.println("Livres empruntés par " + nom + ":");
-        for (Livre livre : livresEmpruntes) {
-            System.out.println(livre.getTitre() + " - " + livre.getAuteur());
+            // Retirer le livre de la liste des livres empruntés par cet utilisateur
+            livresEmpruntes.remove(livre);
+
+            System.out.println("Livre retourné avec succès : " + livre.getTitre());
+        } else {
+            System.out.println("Vous n'avez pas emprunté ce livre, donc vous ne pouvez pas le retourner.");
         }
     }
-}
+
+
+    public void consulterLivresEmpruntes() {
+        if (livresEmpruntes.isEmpty()) {
+            System.out.println("Vous n'avez emprunté aucun livre.");
+        } else {
+            System.out.println("Livres empruntés par " + nom + ":");
+            for (Livre livre : livresEmpruntes) {
+                System.out.println(livre.getTitre() + " - " + livre.getAuteur());
+            }
+        }
+    }
 
 
 
