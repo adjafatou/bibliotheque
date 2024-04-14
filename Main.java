@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.List;
 
 public class Main {
 
@@ -47,8 +48,18 @@ public class Main {
                 case 3: // Rechercher un livre
                     System.out.print("Mot-clé de recherche : ");
                     String motCle = scanner.nextLine();
-                    // Code pour la recherche de livres
+                    List<Livre> resultatsRecherche = bibliotheque.rechercherLivre(motCle);
+
+                    if (resultatsRecherche.isEmpty()) {
+                        System.out.println("Aucun livre trouvé avec le mot-clé '" + motCle + "'.");
+                    } else {
+                        System.out.println("Résultats de la recherche pour '" + motCle + "':");
+                        for (Livre livre : resultatsRecherche) {
+                            System.out.println(livre.getTitre() + " - " + livre.getAuteur());
+                        }
+                    }
                     break;
+
                 case 4: // Quitter
                     System.out.println("Au revoir !");
                     break;
