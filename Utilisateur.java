@@ -61,9 +61,17 @@ public class Utilisateur {
         // Méthode retournerLivre
     }
 
-    public void consulterLivresEmpruntes() {
-        // Méthode consulterLivresEmpruntes
+  public void consulterLivresEmpruntes() {
+    if (livresEmpruntes.isEmpty()) {
+        System.out.println("Vous n'avez emprunté aucun livre.");
+    } else {
+        System.out.println("Livres empruntés par " + nom + ":");
+        for (Livre livre : livresEmpruntes) {
+            System.out.println(livre.getTitre() + " - " + livre.getAuteur());
+        }
     }
+}
+
 
 
 
