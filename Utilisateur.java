@@ -5,7 +5,6 @@ public class Utilisateur {
     private String nom;
     private int numeroIdentification;
     private ArrayList<Livre> livresEmpruntes;
-    private boolean cotisationAjour;
     private String role; // Attribut pour stocker le rôle de l'utilisateur
 
     public Utilisateur(String nom, int numeroIdentification, String role) {
@@ -41,13 +40,8 @@ public class Utilisateur {
         this.livresEmpruntes = livresEmpruntes;
     }
 
-    public boolean isCotisationAjour() {
-        return cotisationAjour;
-    }
-
-    public void setCotisationAjour(boolean cotisationAjour) {
-        this.cotisationAjour = cotisationAjour;
-    }
+   
+   
 
     public String getRole() {
         return role;
